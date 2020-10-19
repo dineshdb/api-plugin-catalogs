@@ -406,6 +406,22 @@ extend type Query {
     sortBy: CatalogItemSortByField = updatedAt
   ): CatalogItemConnection
 
+  "Gets shuffled items from a shop catalog"
+  catalogItemsShuffled(
+    "Provide a list of shop IDs from which you want to get catalog items"
+    shopIds: [ID]!
+
+    "Optionally provide a list of tag IDs to further filter the item list"
+    tagIds: [ID],
+
+    "Additional filters to apply"
+    booleanFilters: [CatalogBooleanFilter],
+
+    "Number of items to return"
+    count: Int,
+
+  ): CatalogItemConnection
+
   "Gets product from catalog"
   catalogItemProduct(
     """
